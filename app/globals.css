@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: clamp(0.609rem, 1.695vw + 0.001rem, 1rem);
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes active-pulse {
+  0%,
+  100% {
+    border-left-color: #000000;
+  }
+  50% {
+    border-left-color: #666666;
+  }
+}
+
+.animate-active-pulse {
+  animation: active-pulse 2s ease-in-out infinite;
+}
+
+.card-title {
+  font-size: 3.25rem;
+  line-height: 0.87;
+  letter-spacing: -0.09375rem;
+}

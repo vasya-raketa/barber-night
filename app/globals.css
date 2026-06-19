@@ -2,20 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Helvetica Neue Condensed Bold extracted from the licensed .ttc.
+   The collection only ships a condensed Bold weight, so both 500 and 700
+   map to the same face to keep buttons and body text condensed. */
+@font-face {
+  font-family: "Helvetica Neue Condensed";
+  src:
+    url("/fonts/HelveticaNeueCondensedBold.woff2") format("woff2"),
+    url("/fonts/HelveticaNeueCondensedBold.woff") format("woff");
+  font-weight: 500 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   font-size: clamp(0.609rem, 1.695vw + 0.001rem, 1rem);
   overflow-x: hidden;
+  font-family: "Helvetica Neue Condensed", "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
 }
 
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue Condensed", "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
   background: #ffffff;
   color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+.btn {
+  font-family: "Helvetica Neue Condensed", "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
 }
 
 @keyframes active-pulse {

@@ -8,7 +8,22 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: [
+          'Helvetica Neue Condensed',
+          'HelveticaNeue-CondensedBold',
+          'Helvetica Neue',
+          'Helvetica',
+          'Arial',
+          'sans-serif',
+        ],
+        condensed: [
+          'Helvetica Neue Condensed',
+          'HelveticaNeue-CondensedBold',
+          'Helvetica Neue',
+          'Helvetica',
+          'Arial',
+          'sans-serif',
+        ],
       },
       maxWidth: {
         content: '591px',

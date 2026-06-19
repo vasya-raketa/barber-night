@@ -9,10 +9,10 @@ import type { Tab } from '@/data';
 import { useCurrentTime } from '@/hooks/useCurrentTime';
 
 const headerTitleClass =
-  'm-0 font-sans text-[4.125rem] font-bold uppercase leading-[0.8] tracking-[-0.12375rem] text-white';
+  'm-0 font-condensed text-[4.125rem] font-bold uppercase leading-[0.8] tracking-[-0.12375rem] text-white';
 
 const headerBrandClass =
-  'font-sans text-[2.09375rem] font-bold uppercase leading-[0.8] tracking-[-0.06281rem] text-white';
+  'font-condensed text-[2.09375rem] font-bold uppercase leading-[0.8] tracking-[-0.06281rem] text-white';
 
 const tabs: Tab[] = ['glowna', 'friends', 'fastfade'];
 
@@ -56,10 +56,8 @@ export default function Home() {
         </div>
 
         <div className="flex w-full shrink-0 items-end justify-between self-stretch">
-          <div className="flex items-end gap-x-3">
-            <span className={headerBrandClass}>POWERED</span>
-            <span className={headerBrandClass}>BY</span>
-          </div>
+          <span className={headerBrandClass}>POWERED</span>
+          <span className={headerBrandClass}>BY</span>
           <Image
             src="/fresha-logo.svg"
             alt="fresha"

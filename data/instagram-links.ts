@@ -38,13 +38,20 @@ export const instagramLinks: Record<string, string> = {
   'KAMILA RACHUT': 'https://www.instagram.com/kamilarauchut',
   'MAREK MAZIARZ': 'https://www.instagram.com/marek_maziarz',
   'ADAM WIĘCEK': 'https://www.instagram.com/wiecekbarber',
+  'PRZEMEK SIWEK': 'https://www.instagram.com/przebarber',
+  'MICHAŁ PIKOCZELLI MARASKIEWICZ': 'https://www.instagram.com/pikoczellicutz',
 
   // FAST FADE
-  'KACPER KŁODAWSKI': '#',
-  'SZYMON SHEFLER': '#',
-  'KAMIL SCIUPEK': '#',
+  'KACPER KŁODAWSKI': 'https://www.instagram.com/klodawski_',
+  'SZYMON SHEFLER': 'https://www.instagram.com/szef.ler',
+  'SANDRA ROGACKA': 'https://www.instagram.com/s_ndra183',
+  'KAMIL CIUPEK': 'https://www.instagram.com/kaamciu_97',
+  'KAMIL SCIUPEK': 'https://www.instagram.com/kaamciu_97',
   'MICHAŁ MUSZ': '#',
-  'KACPER LEWANDOWSKI': '#',
+  'KACPER LEWANDOWSKI': 'https://www.instagram.com/_kacperlewandowski',
+  'KARLEN YERKANYEN': 'https://www.instagram.com/karlen10',
+  'OSKAR JĘDRZEJCZAK': 'https://www.instagram.com/jedrzejczakovy_',
+  'KACPER GOŁUCH': 'https://www.instagram.com/ikacperi',
 };
 
 export function getInstagramUrl(name: string): string | undefined {

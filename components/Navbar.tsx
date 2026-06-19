@@ -22,7 +22,7 @@ const navItems: NavItem[] = [
 ];
 
 const tabLinkClass =
-  'min-h-[44px] cursor-pointer font-sans text-[1.875rem] uppercase leading-[0.87] tracking-[-0.05625rem] text-white no-underline transition-opacity hover:opacity-80';
+  'min-h-[44px] cursor-pointer font-condensed text-[1.875rem] uppercase leading-[0.87] tracking-[-0.05625rem] text-white no-underline transition-opacity hover:opacity-80';
 
 export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
   const handleTabClick = (tab: Tab) => (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -47,7 +47,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
             return (
               <span
                 key={item.id}
-                className="cursor-not-allowed font-sans text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] text-white/40"
+                className="cursor-not-allowed font-condensed text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] text-white/40"
                 aria-disabled="true"
               >
                 {item.label}
@@ -63,7 +63,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               aria-selected={isActive}
               onClick={handleTabClick(item.tab!)}
               className={`${tabLinkClass} ${
-                isActive ? 'border-b-2 border-white font-black' : 'font-bold'
+                isActive ? 'font-bold opacity-100' : 'font-bold opacity-50'
               }`}
             >
               {item.label}

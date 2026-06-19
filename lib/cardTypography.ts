@@ -1,4 +1,4 @@
-export const cardTitleClass = 'card-title font-sans font-bold uppercase';
+export const cardTitleClass = 'card-title font-condensed font-bold uppercase';
 
 export function splitDisplayName(name: string): { line1: string; line2: string } {
   if (name.includes('\n')) {

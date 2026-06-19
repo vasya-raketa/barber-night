@@ -60,7 +60,7 @@ export default function BreakCard({
     >
       <div className="mb-6">{renderName(name, type)}</div>
 
-      <time className="font-sans text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] text-white">
+      <time className="font-condensed text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] text-white">
         {formatTimeRange(timeStart, timeEnd)}
       </time>
     </article>

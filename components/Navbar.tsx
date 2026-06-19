@@ -1,17 +1,19 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import type { Tab } from '@/data/types';
 
 interface NavbarProps {
-  activeTab: Tab;
-  onTabChange: (tab: Tab) => void;
+  activeTab?: Tab;
+  onTabChange?: (tab: Tab) => void;
 }
 
 interface NavItem {
   id: string;
   label: string;
   tab?: Tab;
-  disabled?: boolean;
+  href?: string;
 }
 
 const navItems: NavItem[] = [
@@ -19,17 +21,19 @@ const navItems: NavItem[] = [
   { id: 'friends', label: 'FRIENDS', tab: 'friends' },
   { id: 'fastfade', label: 'FAST FADE', tab: 'fastfade' },
   { id: 'stmnt', label: 'STMNT', tab: 'stmnt' },
-  { id: 'mapa', label: 'MAPA', disabled: true },
+  { id: 'mapa', label: 'MAPA', href: '/mapa' },
 ];
 
 const tabLinkClass =
   'min-h-[44px] cursor-pointer font-condensed text-[1.875rem] uppercase leading-[0.87] tracking-[-0.05625rem] text-white no-underline transition-opacity hover:opacity-80';
 
+function stateClass(isActive: boolean) {
+  return `${tabLinkClass} font-bold ${isActive ? 'opacity-100' : 'opacity-50'}`;
+}
+
 export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
-  const handleTabClick = (tab: Tab) => (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    onTabChange(tab);
-  };
+  const pathname = usePathname();
+  const onHome = pathname === '/';
 
   return (
     <nav
@@ -41,34 +45,53 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
         role="tablist"
       >
         {navItems.map((item) => {
-          const isActive = item.tab === activeTab;
-          const isDisabled = item.disabled;
-
-          if (isDisabled) {
+          if (item.href) {
+            const isActive = pathname === item.href;
             return (
-              <span
+              <Link
                 key={item.id}
-                className="cursor-not-allowed font-condensed text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] text-white/40"
-                aria-disabled="true"
+                href={item.href}
+                aria-current={isActive ? 'page' : undefined}
+                className={stateClass(isActive)}
               >
                 {item.label}
-              </span>
+              </Link>
             );
           }
 
+          const tab = item.tab!;
+          const isActive = onHome && activeTab === tab;
+
+          // On the home page with in-page tab switching, intercept the click.
+          if (onHome && onTabChange) {
+            return (
+              <a
+                key={item.id}
+                href={`/#${tab}`}
+                role="tab"
+                aria-selected={isActive}
+                onClick={(event) => {
+                  event.preventDefault();
+                  onTabChange(tab);
+                }}
+                className={stateClass(isActive)}
+              >
+                {item.label}
+              </a>
+            );
+          }
+
+          // On other routes (e.g. /mapa), link back to home with the tab hash.
           return (
-            <a
+            <Link
               key={item.id}
-              href={`#${item.tab}`}
+              href={`/#${tab}`}
               role="tab"
               aria-selected={isActive}
-              onClick={handleTabClick(item.tab!)}
-              className={`${tabLinkClass} ${
-                isActive ? 'font-bold opacity-100' : 'font-bold opacity-50'
-              }`}
+              className={stateClass(isActive)}
             >
               {item.label}
-            </a>
+            </Link>
           );
         })}
       </div>

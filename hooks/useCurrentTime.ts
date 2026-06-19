@@ -6,7 +6,7 @@ export function useCurrentTime(): Date {
   const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
-    const interval = setInterval(() => setNow(new Date()), 30_000);
+    const interval = setInterval(() => setNow(new Date()), 1_000);
     return () => clearInterval(interval);
   }, []);
 

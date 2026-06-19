@@ -50,19 +50,22 @@ export default function ArtistCard({
   return (
     <article
       id={id}
-      className={`relative mx-auto flex w-full max-w-content scroll-mt-[170px] flex-col justify-between border-b border-b-black p-5 ${activeClass}`}
-      style={{
-        background: `linear-gradient(to right, #D9D9D9 ${fillPercent}%, rgba(255, 255, 255, 1) ${fillPercent}%)`,
-      }}
+      className={`relative mx-auto flex w-full max-w-content scroll-mt-[170px] flex-col justify-between overflow-hidden border-b border-b-black bg-white p-5 ${activeClass}`}
     >
-      <div className="mb-6">
+      <div
+        className="absolute inset-y-0 left-0 bg-card-past transition-[width] duration-1000 ease-linear"
+        style={{ width: `${fillPercent}%` }}
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 mb-6">
         <h2 className={`${cardTitleClass} text-black`}>
           <span className="block">{line1}</span>
           {line2 && <span className="block">{line2}</span>}
         </h2>
       </div>
 
-      <div className="flex items-center justify-between gap-4 self-stretch">
+      <div className="relative z-10 flex items-center justify-between gap-4 self-stretch">
         <time
           className={`font-condensed text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] ${timeColorClass}`}
         >

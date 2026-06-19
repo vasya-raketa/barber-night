@@ -4,6 +4,7 @@ import { formatTimeRange } from '@/data/types';
 import { cardTitleClass, splitDisplayName } from '@/lib/cardTypography';
 
 interface BreakCardProps {
+  id?: string;
   name: string;
   type: EventType;
   timeStart: string;
@@ -45,6 +46,7 @@ function renderName(name: string, type: EventType) {
 }
 
 export default function BreakCard({
+  id,
   name,
   type,
   timeStart,
@@ -56,7 +58,8 @@ export default function BreakCard({
 
   return (
     <article
-      className={`mx-auto flex w-full max-w-content flex-col justify-between border-b border-divider p-5 ${backgroundClass}`}
+      id={id}
+      className={`mx-auto flex w-full max-w-content scroll-mt-[170px] flex-col justify-between border-b border-divider p-5 ${backgroundClass}`}
     >
       <div className="mb-6">{renderName(name, type)}</div>
 

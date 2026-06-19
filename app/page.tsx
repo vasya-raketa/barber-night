@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Timeline from '@/components/Timeline';
 import { schedules } from '@/data';
 import type { Tab } from '@/data';
+import { getCardState } from '@/data';
 import { useCurrentTime } from '@/hooks/useCurrentTime';
 
 const headerTitleClass =
@@ -25,6 +26,10 @@ export default function Home() {
   const currentTime = useCurrentTime();
   const events = schedules[activeTab];
 
+  const activeEventId = events.find(
+    (event) => getCardState(event, currentTime) === 'active'
+  )?.id;
+
   useEffect(() => {
     const syncTabFromHash = () => {
       const hash = window.location.hash.replace('#', '');
@@ -38,6 +43,14 @@ export default function Home() {
     return () => window.removeEventListener('hashchange', syncTabFromHash);
   }, []);
 
+  useEffect(() => {
+    if (!activeEventId) return;
+    const el = document.getElementById(activeEventId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [activeEventId, activeTab]);
+
   const handleTabChange = useCallback((tab: Tab) => {
     setActiveTab(tab);
     window.history.replaceState(null, '', `#${tab}`);
@@ -46,7 +59,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen pb-[120px]">
-      <header className="mx-auto flex h-auto w-full max-w-content shrink-0 flex-col items-start gap-[0.75rem] bg-black p-5">
+      <header className="sticky top-0 z-40 mx-auto flex h-auto w-full max-w-content shrink-0 flex-col items-start gap-[0.75rem] bg-black p-5">
         <div className="flex w-full items-end justify-between self-stretch">
           <div>
             <p className={headerTitleClass}>BARBER</p>

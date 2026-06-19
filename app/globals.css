@@ -17,7 +17,7 @@
 
 html {
   font-size: clamp(0.609rem, 1.695vw + 0.001rem, 1rem);
-  overflow-x: hidden;
+  overflow-x: clip;
   font-family: "Helvetica Neue Condensed", "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
 }
@@ -25,7 +25,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   font-family: "Helvetica Neue Condensed", "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   background: #ffffff;

@@ -18,6 +18,7 @@ export default function Timeline({ events, currentTime }: TimelineProps) {
           return (
             <BreakCard
               key={event.id}
+              id={event.id}
               name={event.name}
               type={event.type}
               timeStart={event.timeStart}
@@ -30,6 +31,7 @@ export default function Timeline({ events, currentTime }: TimelineProps) {
         return (
           <ArtistCard
             key={event.id}
+            id={event.id}
             name={event.name}
             subtitle={event.subtitle}
             timeStart={event.timeStart}

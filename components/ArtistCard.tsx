@@ -3,6 +3,7 @@ import { formatTimeRange, getEventProgress } from '@/data/types';
 import { cardTitleClass, splitDisplayName } from '@/lib/cardTypography';
 
 interface ArtistCardProps {
+  id?: string;
   name: string;
   subtitle?: string;
   timeStart: string;
@@ -24,6 +25,7 @@ function getFillPercent(
 }
 
 export default function ArtistCard({
+  id,
   name,
   subtitle,
   timeStart,
@@ -44,7 +46,8 @@ export default function ArtistCard({
 
   return (
     <article
-      className={`relative mx-auto flex w-full max-w-content flex-col justify-between border-b border-b-black p-5 ${activeClass}`}
+      id={id}
+      className={`relative mx-auto flex w-full max-w-content scroll-mt-[170px] flex-col justify-between border-b border-b-black p-5 ${activeClass}`}
       style={{
         background: `linear-gradient(to right, #D9D9D9 ${fillPercent}%, rgba(255, 255, 255, 1) ${fillPercent}%)`,
       }}
@@ -64,7 +67,9 @@ export default function ArtistCard({
         </time>
 
         {subtitle && (
-          <span className="font-condensed text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] text-black">
+          <span
+            className={`font-condensed text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] ${timeColorClass}`}
+          >
             {subtitle}
           </span>
         )}

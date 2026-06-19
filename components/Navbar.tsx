@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { Tab } from '@/data/types';
@@ -34,9 +35,32 @@ function stateClass(isActive: boolean) {
 export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
   const pathname = usePathname();
   const onHome = pathname === '/';
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+
+    const setHeight = () => {
+      document.documentElement.style.setProperty(
+        '--nav-height',
+        `${nav.offsetHeight}px`
+      );
+    };
+
+    setHeight();
+    const observer = new ResizeObserver(setHeight);
+    observer.observe(nav);
+    window.addEventListener('resize', setHeight);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', setHeight);
+    };
+  }, []);
 
   return (
     <nav
+      ref={navRef}
       className="fixed bottom-0 left-0 right-0 z-50 bg-black px-5 pb-[calc(20px+env(safe-area-inset-bottom))] pt-5"
       aria-label="Stage navigation"
     >

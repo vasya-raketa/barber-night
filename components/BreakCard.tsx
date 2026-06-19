@@ -25,20 +25,20 @@ function FreshaWordmark() {
   );
 }
 
-function renderName(name: string, type: EventType) {
+function renderName(name: string, type: EventType, dimClass: string) {
   const { line1, line2 } = splitDisplayName(name);
 
   if (type === 'panel') {
     return (
       <div>
         <FreshaWordmark />
-        <h2 className={`${cardTitleClass} text-white`}>PANEL</h2>
+        <h2 className={`${cardTitleClass} text-white ${dimClass}`}>PANEL</h2>
       </div>
     );
   }
 
   return (
-    <h2 className={`${cardTitleClass} text-white`}>
+    <h2 className={`${cardTitleClass} text-white ${dimClass}`}>
       <span className="block">{line1}</span>
       {line2 && <span className="block">{line2}</span>}
     </h2>
@@ -55,15 +55,18 @@ export default function BreakCard({
 }: BreakCardProps) {
   const backgroundClass =
     state === 'past' ? 'bg-card-dark-past' : 'bg-black';
+  const pastOpacityClass = state === 'past' ? 'opacity-20' : '';
 
   return (
     <article
       id={id}
       className={`mx-auto flex w-full max-w-content scroll-mt-[170px] flex-col justify-between border-b border-divider p-5 ${backgroundClass}`}
     >
-      <div className="mb-6">{renderName(name, type)}</div>
+      <div className="mb-6">{renderName(name, type, pastOpacityClass)}</div>
 
-      <time className="font-condensed text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] text-white">
+      <time
+        className={`font-condensed text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] text-white ${pastOpacityClass}`}
+      >
         {formatTimeRange(timeStart, timeEnd)}
       </time>
     </article>

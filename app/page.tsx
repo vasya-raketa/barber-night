@@ -52,7 +52,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen pb-[120px]">
+    <main
+      className="min-h-screen"
+      style={{ paddingBottom: 'var(--nav-height, 96px)' }}
+    >
       <Header />
       <Timeline events={events} currentTime={currentTime} />
       <Navbar activeTab={activeTab} onTabChange={handleTabChange} />

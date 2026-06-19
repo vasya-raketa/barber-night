@@ -6,6 +6,7 @@ interface ArtistCardProps {
   id?: string;
   name: string;
   subtitle?: string;
+  section?: string;
   timeStart: string;
   timeEnd: string;
   instagramUrl?: string;
@@ -28,6 +29,7 @@ export default function ArtistCard({
   id,
   name,
   subtitle,
+  section,
   timeStart,
   timeEnd,
   instagramUrl,
@@ -36,6 +38,7 @@ export default function ArtistCard({
 }: ArtistCardProps) {
   const fillPercent = getFillPercent(state, timeStart, timeEnd, currentTime);
   const { line1, line2 } = splitDisplayName(name);
+  const badge = subtitle ?? section;
 
   const activeClass =
     state === 'active'
@@ -66,11 +69,11 @@ export default function ArtistCard({
           {formatTimeRange(timeStart, timeEnd)}
         </time>
 
-        {subtitle && (
+        {badge && (
           <span
             className={`font-condensed text-[1.875rem] font-bold uppercase leading-[0.87] tracking-[-0.05625rem] ${timeColorClass}`}
           >
-            {subtitle}
+            {badge}
           </span>
         )}
 

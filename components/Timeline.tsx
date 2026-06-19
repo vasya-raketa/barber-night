@@ -34,6 +34,7 @@ export default function Timeline({ events, currentTime }: TimelineProps) {
             id={event.id}
             name={event.name}
             subtitle={event.subtitle}
+            section={event.section}
             timeStart={event.timeStart}
             timeEnd={event.timeEnd}
             instagramUrl={event.instagramUrl}

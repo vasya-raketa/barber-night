@@ -18,6 +18,7 @@ const navItems: NavItem[] = [
   { id: 'glowna', label: 'GŁÓWNA', tab: 'glowna' },
   { id: 'friends', label: 'FRIENDS', tab: 'friends' },
   { id: 'fastfade', label: 'FAST FADE', tab: 'fastfade' },
+  { id: 'stmnt', label: 'STMNT', tab: 'stmnt' },
   { id: 'mapa', label: 'MAPA', disabled: true },
 ];
 

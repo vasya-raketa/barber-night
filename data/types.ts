@@ -6,13 +6,14 @@ export type EventType =
   | 'competition'
   | 'closing';
 
-export type Tab = 'glowna' | 'friends' | 'fastfade';
+export type Tab = 'glowna' | 'friends' | 'fastfade' | 'stmnt';
 
 export interface ScheduleEvent {
   id: string;
   type: EventType;
   name: string;
   subtitle?: string;
+  section?: string;
   timeStart: string;
   timeEnd: string;
   instagramUrl?: string;
